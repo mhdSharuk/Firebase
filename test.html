@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://www.gstatic.com/firebasejs/5.7.1/firebase.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/5.7.0/firebase-app.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/5.7.0/firebase-auth.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/5.7.0/firebase-database.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/5.7.0/firebase-firestore.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/5.7.0/firebase-messaging.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/5.7.0/firebase-functions.js"></script> 
+      <script>
+            // Initialize Firebase
+            var config = {
+              apiKey: "AIzaSyBp4hdnksaA78N3sqGbnJDC9K8ftJtVleI",
+              authDomain: "fir-6a748.firebaseapp.com",
+              databaseURL: "https://fir-6a748.firebaseio.com",
+              projectId: "fir-6a748",
+              storageBucket: "fir-6a748.appspot.com",
+              messagingSenderId: "1093447564983"
+            };
+            firebase.initializeApp(config);
+      </script>   
+      <script>
+      function data(){
+        var email = document.getElementById("data").value;
+        firebase.database().ref("userlist").on('child_added',(snap) => {
+            console.log("db")
+            var email = snap.child("Acoount Details/email").val();
+            var name = snap.child("name").val();
+            console.log("email")
+            console.log(email)
+            console.log("name")
+            console.log(name)
+        })
+      }
+      </script>
+</head>
+<body>
+    <input type="text" id = "data" />
+    <button onClick="data()">retrieve</button>
+</body>
+</html>
